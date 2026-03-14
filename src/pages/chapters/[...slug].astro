@@ -1,0 +1,103 @@
+---
+import Base from "../../layouts/Base.astro";
+import "../../styles/global.css";
+import { getCollection, render } from "astro:content";
+import { chapters as chapterMeta } from "../../data/chapters";
+
+export async function getStaticPaths() {
+  const chapters = await getCollection("chapters");
+  return chapters.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const meta = chapterMeta.find((ch) => ch.slug === entry.id);
+const chapterIndex = meta ? chapterMeta.indexOf(meta) : -1;
+const prevChapter = chapterIndex > 0 ? chapterMeta[chapterIndex - 1] : null;
+const nextChapter = chapterIndex < chapterMeta.length - 1 ? chapterMeta[chapterIndex + 1] : null;
+---
+
+<Base title={meta?.title || entry.id} description={`Chapter ${meta?.number}: ${meta?.title} — by ${meta?.oracle} Oracle`}>
+  <main>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4" style="background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06);">
+      <div class="max-w-[750px] mx-auto flex items-center justify-between">
+        <a href="/" class="text-text-muted hover:text-primary transition-colors text-sm">
+          ← Book
+        </a>
+        {meta && (
+          <span class="text-text-dim text-sm">
+            Chapter {meta.number} of {chapterMeta.length}
+          </span>
+        )}
+      </div>
+    </nav>
+
+    <!-- Chapter header -->
+    <section class="pt-28 pb-12 px-6">
+      <div class="max-w-[750px] mx-auto">
+        {meta && (
+          <div class="mb-8 reveal">
+            <p class="text-text-dim text-sm tracking-[0.15em] uppercase mb-3">
+              Chapter {meta.number}
+            </p>
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-3xl">{meta.emoji}</span>
+              <span class="text-sm font-medium" style={`color: ${meta.color}`}>
+                {meta.oracle} Oracle
+              </span>
+              <span class="text-text-dim text-sm">· {meta.domain}</span>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Chapter content -->
+    <article class="px-6 pb-24">
+      <div class="max-w-[750px] mx-auto prose text-text reveal">
+        <Content />
+      </div>
+    </article>
+
+    <!-- Chapter navigation -->
+    <nav class="px-6 pb-24">
+      <div class="max-w-[750px] mx-auto flex items-stretch gap-3">
+        {prevChapter ? (
+          <a
+            href={`/chapters/${prevChapter.slug}`}
+            class="glass p-5 flex-1 group no-underline block"
+          >
+            <p class="text-text-dim text-xs mb-1">← Previous</p>
+            <p class="text-text-muted group-hover:text-primary transition-colors text-sm font-medium">
+              {prevChapter.emoji} {prevChapter.title}
+            </p>
+          </a>
+        ) : <div class="flex-1" />}
+        {nextChapter ? (
+          <a
+            href={`/chapters/${nextChapter.slug}`}
+            class="glass p-5 flex-1 text-right group no-underline block"
+          >
+            <p class="text-text-dim text-xs mb-1">Next →</p>
+            <p class="text-text-muted group-hover:text-primary transition-colors text-sm font-medium">
+              {nextChapter.title} {nextChapter.emoji}
+            </p>
+          </a>
+        ) : <div class="flex-1" />}
+      </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="px-6 py-12 border-t border-border">
+      <div class="max-w-[750px] mx-auto text-center">
+        <a href="/" class="text-text-muted hover:text-primary transition-colors text-sm">
+          ← Back to all chapters
+        </a>
+      </div>
+    </footer>
+  </main>
+</Base>

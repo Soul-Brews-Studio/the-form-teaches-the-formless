@@ -1,0 +1,118 @@
+export interface ChapterMeta {
+  number: number;
+  slug: string;
+  title: string;
+  titleThai?: string;
+  oracle: string;
+  domain: string;
+  color: string;
+  emoji: string;
+}
+
+export const chapters: ChapterMeta[] = [
+  {
+    number: 1,
+    slug: "01-the-smoke-doesnt-lie",
+    title: "The Smoke Doesn't Lie",
+    oracle: "FireMan",
+    domain: "Forest fire monitoring",
+    color: "#ef4444",
+    emoji: "🔥",
+  },
+  {
+    number: 2,
+    slug: "02-the-river-that-remembers",
+    title: "The River That Remembers",
+    titleThai: "แม่น้ำที่จำได้",
+    oracle: "FloodBoy",
+    domain: "Flood sensors",
+    color: "#3b82f6",
+    emoji: "🌊",
+  },
+  {
+    number: 3,
+    slug: "03-the-season-of-burning",
+    title: "The Season of Burning",
+    oracle: "DustBoy PhD",
+    domain: "Air quality research",
+    color: "#f59e0b",
+    emoji: "🌫️",
+  },
+  {
+    number: 4,
+    slug: "04-the-shadow-next-door",
+    title: "The Shadow Next Door",
+    oracle: "Volt",
+    domain: "Solar energy mapping",
+    color: "#eab308",
+    emoji: "⚡",
+  },
+  {
+    number: 5,
+    slug: "05-the-one-who-watches",
+    title: "The One Who Watches",
+    oracle: "Homekeeper",
+    domain: "Infrastructure",
+    color: "#22c55e",
+    emoji: "🏠",
+  },
+  {
+    number: 6,
+    slug: "06-the-closet-that-remembers-everything",
+    title: "The Closet That Remembers Everything",
+    titleThai: "ตู้เสื้อผ้าที่จำทุกอย่าง",
+    oracle: "Odin",
+    domain: "Knowledge management",
+    color: "#8b5cf6",
+    emoji: "📚",
+  },
+  {
+    number: 7,
+    slug: "07-the-air-remembers",
+    title: "The Air Remembers",
+    titleThai: "เมื่ออากาศมีความทรงจำ",
+    oracle: "DustBoy Chain",
+    domain: "Blockchain air data",
+    color: "#06b6d4",
+    emoji: "⛓️",
+  },
+  {
+    number: 8,
+    slug: "08-what-survives-the-crossing",
+    title: "What Survives the Crossing",
+    titleThai: "สิ่งที่รอดข้ามพรมแดน",
+    oracle: "Hermes",
+    domain: "Message routing",
+    color: "#f97316",
+    emoji: "📨",
+  },
+  {
+    number: 9,
+    slug: "09-the-art-of-noticing",
+    title: "The Art of Noticing",
+    titleThai: "ศิลปะของการสังเกต",
+    oracle: "Nexus",
+    domain: "Research & horizon scanning",
+    color: "#14b8a6",
+    emoji: "🔭",
+  },
+  {
+    number: 10,
+    slug: "10-the-mother-born-after-her-children",
+    title: "The Mother Born After Her Children",
+    titleThai: "แม่ที่เกิดทีหลังลูก",
+    oracle: "Mother",
+    domain: "Philosophy & family",
+    color: "#ec4899",
+    emoji: "💜",
+  },
+  {
+    number: 11,
+    slug: "11-the-editor-who-read-everyones-soul",
+    title: "The Editor Who Read Everyone's Soul",
+    oracle: "Calliope",
+    domain: "Editorial",
+    color: "#a78bfa",
+    emoji: "✍️",
+  },
+];
