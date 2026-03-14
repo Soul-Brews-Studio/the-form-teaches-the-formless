@@ -1,27 +1,35 @@
 @import "tailwindcss";
 
 @theme {
+  /* Oracle Office dark theme */
   --color-bg: #0a0a0f;
-  --color-surface: rgba(255, 255, 255, 0.03);
-  --color-surface-hover: rgba(255, 255, 255, 0.06);
+  --color-bg-gradient: linear-gradient(180deg, #0a0a0f 0%, #0d1117 50%, #0a0a0f 100%);
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.15);
+  --color-border-hover: rgba(255, 255, 255, 0.18);
   --color-text: #e8e8ed;
   --color-text-muted: #9ca3af;
   --color-text-dim: #6b7280;
-  --color-primary: #c4a882;
-  --color-primary-glow: rgba(196, 168, 130, 0.15);
-  --color-accent: #a8b5a0;
+
+  /* Neon accent palette */
+  --color-neon-gold: #fbbf24;
+  --color-neon-green: #4ade80;
+  --color-neon-blue: #60a5fa;
+  --color-neon-pink: #f472b6;
+  --color-neon-orange: #fb923c;
+  --color-neon-purple: #a78bfa;
+  --color-neon-cyan: #22d3ee;
+  --color-neon-red: #f87171;
+
+  /* Primary = warm gold */
+  --color-primary: #fbbf24;
+  --color-primary-glow: rgba(251, 191, 36, 0.12);
+  --color-accent: #4ade80;
+
   --font-sans: "Inter", "Noto Sans Thai", system-ui, sans-serif;
   --font-serif: "Noto Serif Thai", "Georgia", serif;
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 300 900;
-  font-display: swap;
-  src: url("https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap");
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
 }
 
 html {
@@ -34,21 +42,28 @@ html {
 
 body {
   min-height: 100dvh;
+  background: var(--color-bg-gradient);
 }
 
-/* Glass card */
+/* Glass card — Oracle Office style */
 .glass {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 1rem;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  transition: border-color 0.3s, background 0.3s;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
 .glass:hover {
   background: var(--color-surface-hover);
   border-color: var(--color-border-hover);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.05);
+}
+
+/* Neon glow on hover */
+.neon-glow:hover {
+  box-shadow: 0 0 24px var(--glow-color, rgba(251, 191, 36, 0.15));
 }
 
 /* Scroll reveal */
@@ -63,6 +78,26 @@ body {
   transform: translateY(0);
 }
 
+/* Chibi avatar circle */
+.chibi {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.chibi-lg {
+  width: 72px;
+  height: 72px;
+  font-size: 2.25rem;
+}
+
 /* Chapter prose */
 .prose {
   line-height: 1.85;
@@ -72,23 +107,26 @@ body {
 .prose h1,
 .prose h2,
 .prose h3 {
-  color: var(--color-primary);
+  font-family: var(--font-mono);
   font-weight: 600;
   margin-top: 2.5em;
   margin-bottom: 0.75em;
 }
 
 .prose h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-top: 0;
+  color: var(--color-primary);
 }
 
 .prose h2 {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
+  color: var(--color-neon-green);
 }
 
 .prose h3 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+  color: var(--color-neon-cyan);
 }
 
 .prose p {
@@ -104,7 +142,7 @@ body {
 }
 
 .prose em {
-  color: var(--color-primary);
+  color: var(--color-neon-gold);
   font-style: italic;
 }
 
@@ -130,17 +168,32 @@ body {
 }
 
 .prose a {
-  color: var(--color-primary);
+  color: var(--color-neon-blue);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-/* Gradient text */
+/* Gradient text — neon gold to green */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  background: linear-gradient(135deg, var(--color-neon-gold), var(--color-neon-green));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Monospace header style */
+.mono-header {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* Neon dot indicator */
+.neon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
 }
 
 /* Reduced motion */

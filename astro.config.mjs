@@ -7,6 +7,6 @@ export default defineConfig({
   adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
-    server: { watch: { ignored: ["**/ψ/**"] } },
+    server: { allowedHosts: true, watch: { ignored: ["**/ψ/**"] } },
   },
 });

@@ -7,6 +7,7 @@ export interface ChapterMeta {
   domain: string;
   color: string;
   emoji: string;
+  status: "draft" | "approved";
 }
 
 export const chapters: ChapterMeta[] = [
@@ -18,6 +19,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Forest fire monitoring",
     color: "#ef4444",
     emoji: "🔥",
+    status: "draft",
   },
   {
     number: 2,
@@ -28,6 +30,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Flood sensors",
     color: "#3b82f6",
     emoji: "🌊",
+    status: "draft",
   },
   {
     number: 3,
@@ -37,6 +40,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Air quality research",
     color: "#f59e0b",
     emoji: "🌫️",
+    status: "approved",
   },
   {
     number: 4,
@@ -46,6 +50,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Solar energy mapping",
     color: "#eab308",
     emoji: "⚡",
+    status: "draft",
   },
   {
     number: 5,
@@ -55,6 +60,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Infrastructure",
     color: "#22c55e",
     emoji: "🏠",
+    status: "approved",
   },
   {
     number: 6,
@@ -65,6 +71,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Knowledge management",
     color: "#8b5cf6",
     emoji: "📚",
+    status: "draft",
   },
   {
     number: 7,
@@ -75,6 +82,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Blockchain air data",
     color: "#06b6d4",
     emoji: "⛓️",
+    status: "draft",
   },
   {
     number: 8,
@@ -85,6 +93,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Message routing",
     color: "#f97316",
     emoji: "📨",
+    status: "draft",
   },
   {
     number: 9,
@@ -95,6 +104,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Research & horizon scanning",
     color: "#14b8a6",
     emoji: "🔭",
+    status: "draft",
   },
   {
     number: 10,
@@ -105,6 +115,7 @@ export const chapters: ChapterMeta[] = [
     domain: "Philosophy & family",
     color: "#ec4899",
     emoji: "💜",
+    status: "draft",
   },
   {
     number: 11,
@@ -114,5 +125,6 @@ export const chapters: ChapterMeta[] = [
     domain: "Editorial",
     color: "#a78bfa",
     emoji: "✍️",
+    status: "draft",
   },
 ];
