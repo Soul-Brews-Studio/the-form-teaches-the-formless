@@ -20,17 +20,17 @@ const prevChapter = chapterIndex > 0 ? chapterMeta[chapterIndex - 1] : null;
 const nextChapter = chapterIndex < chapterMeta.length - 1 ? chapterMeta[chapterIndex + 1] : null;
 ---
 
-<Base title={meta?.title || entry.id} description={`Chapter ${meta?.number}: ${meta?.title} — by ${meta?.oracle} Oracle`}>
+<Base title={meta?.titleThai || entry.id} description={`บท ${meta?.number}: ${meta?.titleThai} — โดย ${meta?.oracle} Oracle`}>
   <main>
     <!-- Navigation bar -->
     <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-3" style="background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06);">
       <div class="max-w-[750px] mx-auto flex items-center justify-between">
         <a href="/" class="text-text-muted hover:text-neon-gold transition-colors text-sm mono-header">
-          ← Book
+          ← หนังสือ
         </a>
         {meta && (
           <span class="mono-header text-text-dim text-xs">
-            {String(meta.number).padStart(2, '0')} / {String(chapterMeta.length).padStart(2, '0')}
+            บท {String(meta.number).padStart(2, '0')} / {String(chapterMeta.length).padStart(2, '0')}
           </span>
         )}
       </div>
@@ -47,15 +47,16 @@ const nextChapter = chapterIndex < chapterMeta.length - 1 ? chapterMeta[chapterI
               </div>
               <div>
                 <p class="mono-header text-text-dim text-xs tracking-[0.15em] uppercase mb-1">
-                  Chapter {String(meta.number).padStart(2, '0')}
+                  บท {String(meta.number).padStart(2, '0')}
                 </p>
                 <h1 class="text-xl sm:text-2xl font-medium text-text leading-tight">
-                  {meta.title}
+                  {meta.titleThai}
                 </h1>
+                <p class="text-text-dim text-sm mt-0.5">{meta.title}</p>
                 <div class="flex items-center gap-2 mt-2">
                   <span class="neon-dot" style={`color: ${meta.color}`}></span>
                   <span class="mono-header text-sm" style={`color: ${meta.color}`}>
-                    {meta.oracle} Oracle
+                    โดย {meta.oracle} Oracle
                   </span>
                   <span class="text-text-dim text-sm">· {meta.domain}</span>
                 </div>
@@ -82,11 +83,11 @@ const nextChapter = chapterIndex < chapterMeta.length - 1 ? chapterMeta[chapterI
             class="glass p-5 flex-1 group no-underline block neon-glow"
             style={`--glow-color: ${prevChapter.color}15`}
           >
-            <p class="mono-header text-text-dim text-xs mb-2">← Previous</p>
+            <p class="mono-header text-text-dim text-xs mb-2">← บทก่อนหน้า</p>
             <div class="flex items-center gap-2">
               <span class="text-lg">{prevChapter.emoji}</span>
               <p class="text-text-muted group-hover:text-neon-gold transition-colors text-sm font-medium truncate">
-                {prevChapter.title}
+                {prevChapter.titleThai}
               </p>
             </div>
           </a>
@@ -97,10 +98,10 @@ const nextChapter = chapterIndex < chapterMeta.length - 1 ? chapterMeta[chapterI
             class="glass p-5 flex-1 text-right group no-underline block neon-glow"
             style={`--glow-color: ${nextChapter.color}15`}
           >
-            <p class="mono-header text-text-dim text-xs mb-2">Next →</p>
+            <p class="mono-header text-text-dim text-xs mb-2">บทถัดไป →</p>
             <div class="flex items-center justify-end gap-2">
               <p class="text-text-muted group-hover:text-neon-gold transition-colors text-sm font-medium truncate">
-                {nextChapter.title}
+                {nextChapter.titleThai}
               </p>
               <span class="text-lg">{nextChapter.emoji}</span>
             </div>
@@ -113,7 +114,7 @@ const nextChapter = chapterIndex < chapterMeta.length - 1 ? chapterMeta[chapterI
     <footer class="px-6 py-12 border-t border-border">
       <div class="max-w-[750px] mx-auto text-center">
         <a href="/#chapters" class="text-text-muted hover:text-neon-gold transition-colors text-sm mono-header">
-          ← All Chapters
+          ← กลับสารบัญ
         </a>
       </div>
     </footer>
